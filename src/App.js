@@ -1,4 +1,5 @@
 //import logo from './logo.svg';
+import { Fragment } from 'react';
 import './App.css';
 
 const welcome = {
@@ -35,7 +36,7 @@ function List() {
       {list.map(function (item) {
         return (
           <li key={item.objectID}>
-            <a href={item.url} target="_blank">{getTitle(item.title)}</a>
+            <a href={item.url} rel="noreferrer" target="_blank">{getTitle(item.title)}</a>
             <span>&nbsp;by {item.author}</span>
             <div>
               <span>{item.num_comments} comments</span>
@@ -49,15 +50,25 @@ function List() {
   );
 }
 
+function Search() {
+  return (
+    <Fragment>
+      <label htmlFor="search">Search : </label>
+      <input type="text" id="search" />
+    </Fragment>
+  )
+}
+
 
 function App() {
   return (
     <div>
       <h1>{welcome.greeting} {getTitle(welcome.title)}!</h1>
-      <List />
       <div>
-        <label htmlFor="search">Search : </label>
-        <input type="text" id="search" />
+        <Search />
+      </div>
+      <div>
+        <List />
       </div>
     </div>
   );
