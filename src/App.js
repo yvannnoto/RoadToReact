@@ -2,20 +2,29 @@
 import { Fragment } from 'react';
 import './App.css';
 
+// Example of a class, getName is a class method
+class Person {
+  // All javascript classes require a constructor
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  getName() {
+    return this.firstName + ' ' + this.lastName;
+  }
+}
+
 const welcome = {
   title: 'React',
   greeting: 'Hey'
 };
 
-function getTitle(title) {
-  return title;
-}
-
 const list = [
   {
     title: 'React',
     url: 'https://reactjs.org',
-    author: 'Jordan Walke',
+    author: new Person('Jordan', 'Walke'),
     num_comments: 3,
     points: 4,
     objectID: 0
@@ -23,7 +32,7 @@ const list = [
   {
     title: 'Redux',
     url: 'https://redux.js.org',
-    author: 'Dan Abramov and Andrew Clark',
+    author: new Person('Dan', 'Abramov'),
     num_comments: 2,
     points: 5,
     objectID: 1
@@ -36,8 +45,8 @@ function List() {
       {list.map(function (item) {
         return (
           <li key={item.objectID}>
-            <a href={item.url} rel="noreferrer" target="_blank">{getTitle(item.title)}</a>
-            <span>&nbsp;by {item.author}</span>
+            <a href={item.url} rel="noreferrer" target="_blank">{item.title}</a>
+            <span>&nbsp;by {item.author.getName()}</span>
             <div>
               <span>{item.num_comments} comments</span>
               <span> | </span>
@@ -59,11 +68,15 @@ function Search() {
   )
 }
 
+// Example of a class use, "new" is mandatory to generate a new Person
+// yvann.getName() uses the methode decalered in the Person class.
+const yvann = new Person('Yvann', 'Noto');
 
 function App() {
   return (
     <div>
-      <h1>{welcome.greeting} {getTitle(welcome.title)}!</h1>
+      <h1>{welcome.greeting} {welcome.title}!</h1>
+      <p><small>Created by <i><a href="https://www.yvannnoto.com" target="_blank" rel="noreferrer">{yvann.getName()}</a></i></small></p>
       <div>
         <Search />
       </div>
