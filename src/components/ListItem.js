@@ -1,14 +1,14 @@
 import React from 'react'
 
-function ListItem(props) {
+function ListItem({ item }) {
   return (
-    <li key={props.item.objectID}>
-      <a href={props.item.url} rel="noreferrer" target="_blank">{props.item.title}</a>
-      <span>&nbsp;by {props.item.author.getName()}</span>
+    <li key={item.objectID}>
+      <a href={item.url} rel="noreferrer" target="_blank">{item.title}</a>
+      <span>&nbsp;by {item.author.getName()}</span>
       <div>
-        <span>{props.item.num_comments} comments</span>
+        <span>{item.num_comments} comments</span>
         <span> | </span>
-        <span>{props.item.points} points</span>
+        <span>{item.points} points</span>
       </div>
     </li>
   )
