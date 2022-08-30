@@ -26,7 +26,7 @@ class Person {
 const yvann = new Person("Yvann", "Noto");
 
 const App = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -58,8 +58,6 @@ const App = () => {
     return story.title.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
-  console.log(filteredStories);
-
   return (
     <Fragment>
       <div>
@@ -81,7 +79,7 @@ const App = () => {
           </small>
         </p>
       </div>
-      <Search onSearch={handleSearch} />
+      <Search onSearch={handleSearch} search={searchTerm} />
       <List list={filteredStories} />
     </Fragment>
   );
