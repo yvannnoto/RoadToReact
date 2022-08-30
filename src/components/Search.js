@@ -1,10 +1,11 @@
 import React, { Fragment } from "react";
 
-const Search = (props) => {
+const Search = ({ search, onSearch }) => {
+
   return (
     <Fragment>
       <label htmlFor="search">Search : </label>
-      <input type="text" id="search" onChange={props.onSearch} value={props.search} />
+      <input type="text" id="search" onChange={onSearch} value={search} />
     </Fragment>
   );
 };
