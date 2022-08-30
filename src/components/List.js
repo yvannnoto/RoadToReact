@@ -4,9 +4,9 @@ import ListItem from './ListItem'
 function List({ list }) {
   return (
     <ul>
-      {list.map((item, index) => {
+      {list.map((item) => {
         return (
-          <ListItem item={item} key={index} />
+          <ListItem item={item} key={item.objectID} />
         )
       })}
     </ul>
