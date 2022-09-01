@@ -1,12 +1,6 @@
-//import logo from './logo.svg';
-import { Fragment, useState } from "react";
 import List from "./components/List";
 import Search from "./components/Search";
-
-const welcome = {
-  title: "React",
-  greeting: "Hey",
-};
+import useStorageState from "./hooks/useStorageState";
 
 // Example of a class, getName is a class method
 class Person {
@@ -21,15 +15,13 @@ class Person {
   }
 }
 
-// Example of a class use, "new" is mandatory to generate a new Person
-// yvann.getName() uses the methode decalered in the Person class.
-const yvann = new Person("Yvann", "Noto");
-
 const App = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+
+  const [searchTerm, setSearchTerm] = useStorageState('search', '');
 
   const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
+    const eventValue = event.target.value;
+    setSearchTerm(eventValue);
   };
 
   const stories = [
@@ -59,29 +51,12 @@ const App = () => {
   });
 
   return (
-    <Fragment>
-      <div>
-        <h1>
-          {welcome.greeting} {welcome.title}!
-        </h1>
-        <p>
-          <small>
-            Created by{" "}
-            <i>
-              <a
-                href="https://www.yvannnoto.com"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {yvann.getName()}
-              </a>
-            </i>
-          </small>
-        </p>
+    <div className="container">
+      <div className="py-5 p-md-5">
+        <Search onSearch={handleSearch} search={searchTerm} />
+        <List list={filteredStories} />
       </div>
-      <Search onSearch={handleSearch} search={searchTerm} />
-      <List list={filteredStories} />
-    </Fragment>
+    </div>
   );
 };
 

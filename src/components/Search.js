@@ -1,12 +1,10 @@
-import React, { Fragment } from "react";
-
 const Search = ({ search, onSearch }) => {
 
   return (
-    <Fragment>
-      <label htmlFor="search">Search : </label>
-      <input type="text" id="search" onChange={onSearch} value={search} />
-    </Fragment>
+    <div class="input-group mb-3">
+      <input type="text" className="form-control" id="search" onChange={onSearch} value={search} placeholder="Search through the list" />
+      <button class="btn btn-primary" type="button" id="button-addon2">Search</button>
+    </div>
   );
 };
 
